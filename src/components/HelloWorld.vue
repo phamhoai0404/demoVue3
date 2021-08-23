@@ -2,8 +2,10 @@
     <div>
         <h1>Hello World</h1>
         <h2>Tên {{fullName}}</h2>
-        <h2 style="background-color: green;">Truyền từ Props ( component cha sang):  {{ titeNameNhe}}</h2>
+        <h2 style="background-color: green;">Truyền từ Props ( component cha sang): {{ titeNameNhe}}</h2>
         <button @click="clickHelloWord">ButtonHelloWord</button>
+        <button @click="testEmit">Button Test Emit</button>
+
 
         <!-- Sử dụng v-for nhá -->
         <br>
@@ -15,13 +17,14 @@
                 <td>Tên Quả</td>
                 <td>Số lượng</td>
             </tr>
-            <tr v-for= "(itemssss, indexsss)  in arrayFitterComputed" :key="indexsss">
+            <tr v-for="(itemssss, indexsss)  in arrayFitterComputed" :key="indexsss">
                 <td>{{indexsss + 1}}</td>
-                <td>{{itemssss.id  }}</td>
+                <td>{{itemssss.id }}</td>
                 <td>{{itemssss.name}}</td>
                 <td>{{itemssss.number }}</td>
             </tr>
         </table>
+
 
 
     </div>
@@ -39,8 +42,8 @@
                 ]
             }
         },
-        props :{
-            titeNameNhe:{
+        props: {
+            titeNameNhe: {
                 type: String,
                 required: true,//Đây là yêu cầu bắt buộc phải có nếu không có thì nó để mặc định là false
             }
@@ -49,12 +52,16 @@
         methods: {
             clickHelloWord() {
                 console.log("click hello world");
+            },
+            
+            testEmit(){
+                this.$emit("DoNhaEmit");
             }
         },
-        computed:{
-            arrayFitterComputed(){
+        computed: {
+            arrayFitterComputed() {
                 // Đây là hàm lọc đấy nhớ đấy nhé
-                return this.products.filter(item  => item.number >= 100);
+                return this.products.filter(item => item.number >= 100);
             }
         }
     }

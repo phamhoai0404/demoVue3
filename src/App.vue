@@ -4,7 +4,11 @@
         - Sử dụng props: truyền dữ liệu từ component cha sang componet con nhá !
 
      -->
-    <HelloWorld ref="hello" :titeNameNhe = namesss />
+    <HelloWorld
+         ref="hello" 
+        :titeNameNhe=namesss
+        @DoNhaEmit = "emitNha()"
+        />
     <!--nếu mà viết như trên là kiểu v-bind khi mà namesss thay đổi thì titeNameNhe cũng thay đổi theo còn viết theo kiểu dưới thì là cố định là " Xinh gái quá đê"
                 titeNameNhe= "Xinh gái quá đê " 
         
@@ -74,13 +78,16 @@
                 console.log("Giá trị từ component HelloWord con nha: ", this.$refs.hello.fullName);
 
                 // Test thử kích vào testRef thì nó làm thay đổi this.namesss cũng làm thay đổi titeNameNhe trong component con luôn nhá
-                this.namesss =="changesssssss" ? this.namesss = "hoaoooooooooo": this.namesss = "changesssssss";
+                this.namesss == "changesssssss" ? this.namesss = "hoaoooooooooo" : this.namesss = "changesssssss";
             },
             changeXY(event) {
                 console.log(" đi vào Ô vuông v-if đúng", event);
                 // offsetX cái tên kiểu như này là lấy ở trong cosole.log đấy nhá
                 this.X = event.offsetX;
                 this.Y = event.offsetY;
+            },
+            emitNha(){
+                alert("truyền emit từ con sang cha");
             }
         },
     }
