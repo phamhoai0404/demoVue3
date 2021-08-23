@@ -4,11 +4,7 @@
         - Sử dụng props: truyền dữ liệu từ component cha sang componet con nhá !
 
      -->
-    <HelloWorld
-         ref="hello" 
-        :titeNameNhe=namesss
-        @DoNhaEmit = "emitNha()"
-        />
+    <HelloWorld ref="hello" :titeNameNhe=namesss @DoNhaEmit="emitNha()" />
     <!--nếu mà viết như trên là kiểu v-bind khi mà namesss thay đổi thì titeNameNhe cũng thay đổi theo còn viết theo kiểu dưới thì là cố định là " Xinh gái quá đê"
                 titeNameNhe= "Xinh gái quá đê " 
         
@@ -41,6 +37,16 @@
 
     </div>
     <div v-show="isClass" class="card"> </div>
+    
+    <!-- Cái này dùng để test xem nhúng được bootstrap chưa thôi -->
+    <!-- Nhưng nó chưa hỗ trợ hết cho vue 3 hay sao ấy (stackoverflow) -->
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">xinh gái</div>
+            <div class="col-md-4">xinh gái 2</div>
+            <div class="col-md-4">xinh gái 3</div>
+        </div>
+    </div>
 
 </template>
 
@@ -86,14 +92,14 @@
                 this.X = event.offsetX;
                 this.Y = event.offsetY;
             },
-            emitNha(){
+            emitNha() {
                 alert("truyền emit từ con sang cha");
             }
         },
     }
 </script>
 
-<style>
+<style scoped>
     .colorToggle {
         background-color: red;
     }
