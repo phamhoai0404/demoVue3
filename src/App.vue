@@ -48,23 +48,27 @@
         </div>
     </div>
 
-    <BaseDialog v-if="isShowBaseDialog" @cancelssss ="changBasicDialog()">
-        <!-- Có thể đặt thứ tự linh tinh cũng được -->
-        <template v-slot:footer >
-            <h1>Dữ liệu từ Appp nha footer</h1>
-        </template>
-        <template v-slot:headerrrr>
-            <h1>Dữ liệu từ App nha Header</h1>
-        </template>
+    <!-- Để ngang cấp trong body nó to bằng app đấy nha-->
+    <teleport to='body'>
+        <BaseDialog v-if="isShowBaseDialog" @cancelssss="changBasicDialog()">
+            <!-- Có thể đặt thứ tự linh tinh cũng được -->
+            <template v-slot:footer>
+                <h1>Dữ liệu từ Appp nha footer</h1>
+            </template>
+            <template v-slot:headerrrr>
+                <h1>Dữ liệu từ App nha Header</h1>
+            </template>
 
-        <!-- còn nếu mặc định nó không trong template nào thì nó ở trong cái BasicDialog có mỗi chữ <slot/> -->
-        <h1>Thế nhé slot không ở trong các template nào</h1>
-        <button @click= " changBasicDialog()">XinhgaiApp</button>
-        <br>
-        <br>
-        
-    </BaseDialog>
-    <button @click= " changBasicDialog()">Toggle</button>
+            <!-- còn nếu mặc định nó không trong template nào thì nó ở trong cái BasicDialog có mỗi chữ <slot/> -->
+            <h1>Thế nhé slot không ở trong các template nào</h1>
+            <button @click=" changBasicDialog()">XinhgaiApp</button>
+            <br>
+            <br>
+
+        </BaseDialog>
+    </teleport>
+
+    <button @click=" changBasicDialog()">Toggle</button>
 
 </template>
 
@@ -117,11 +121,11 @@
             emitNha() {
                 alert("truyền emit từ con sang cha");
             },
-            changBasicDialog(){
+            changBasicDialog() {
                 this.isShowBaseDialog = !this.isShowBaseDialog;
-                console.log( this.isShowBaseDialog);
+                console.log(this.isShowBaseDialog);
             },
-            changeToggle(){
+            changeToggle() {
 
             }
         },
