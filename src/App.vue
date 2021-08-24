@@ -5,7 +5,7 @@
         - Sử dụng props: truyền dữ liệu từ component cha sang componet con nhá !
 
      -->
-        <HelloWorld ref="hello" :titeNameNhe=namesss @DoNhaEmit="emitNha()" />
+        <HelloWorld ref="hello" :titeNameNhe=namesss @doNhaEmit="emitNha()" @truyenEmitData = "emitLayData($event)"/>
         <!--nếu mà viết như trên là kiểu v-bind khi mà namesss thay đổi thì titeNameNhe cũng thay đổi theo còn viết theo kiểu dưới thì là cố định là " Xinh gái quá đê"
                 titeNameNhe= "Xinh gái quá đê " 
         
@@ -89,7 +89,7 @@
                 X: 0,
                 Y: 0,
                 namesss: "hoaoooooooooo",
-                isShow: false,
+                isShow: true,
                 isShowBaseDialog: false,
             }
         },
@@ -120,6 +120,10 @@
             },
             emitNha() {
                 alert("truyền emit từ con sang cha");
+            },
+            emitLayData(dataEvent){
+                console.log("Dữ liệu truyền từ emit con sang cha : ", dataEvent);
+                console.log(`- thành phần trong dataEvent: ${dataEvent.trangthai} và ${dataEvent.chu} ` );
             },
             changBasicDialog() {
                 this.isShowBaseDialog = !this.isShowBaseDialog;

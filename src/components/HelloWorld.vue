@@ -5,6 +5,7 @@
         <h2 style="background-color: green;">Truyền từ Props ( component cha sang): {{ titeNameNhe}}</h2>
         <button @click="clickHelloWord">ButtonHelloWord</button>
         <button @click="testEmit">Button Test Emit</button>
+        <button @click="testEmitData">Button Test Emit Data</button>
 
 
         <!-- Sử dụng v-for nhá -->
@@ -55,7 +56,10 @@
             },
             
             testEmit(){
-                this.$emit("DoNhaEmit");
+                this.$emit("doNhaEmit");
+            },
+            testEmitData(){
+                this.$emit("truyenEmitData", { trangthai: true, chu: "Phạm Hoài Nhá" });
             }
         },
         computed: {
